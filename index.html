@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord AI Bot Setup</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fab fa-discord"></i> Discord AI Bot Setup</h1>
+            <p>Configure your intelligent Discord bot with AI capabilities</p>
+        </header>
+
+        <div class="setup-sections">
+            <!-- Bot Configuration -->
+            <section class="setup-card">
+                <h2><i class="fas fa-robot"></i> Bot Configuration</h2>
+                <div class="form-group">
+                    <label for="botName">Bot Name:</label>
+                    <input type="text" id="botName" placeholder="AI Assistant Bot" value="AI Assistant Bot">
+                </div>
+                <div class="form-group">
+                    <label for="botDescription">Description:</label>
+                    <textarea id="botDescription" placeholder="An intelligent Discord bot powered by AI">An intelligent Discord bot powered by AI that can help with various tasks</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="botPrefix">Command Prefix:</label>
+                    <input type="text" id="botPrefix" placeholder="!" value="!" maxlength="3">
+                </div>
+            </section>
+
+            <!-- Status & Presence -->
+            <section class="setup-card">
+                <h2><i class="fas fa-signal"></i> Status & Presence</h2>
+                <div class="form-group">
+                    <label for="activityType">Activity Type:</label>
+                    <select id="activityType">
+                        <option value="watching">Watching</option>
+                        <option value="playing">Playing</option>
+                        <option value="listening">Listening to</option>
+                        <option value="streaming">Streaming</option>
+                        <option value="competing">Competing in</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="activityText">Activity Text:</label>
+                    <input type="text" id="activityText" placeholder="for commands" value="for commands">
+                </div>
+                <div class="form-group">
+                    <label for="presenceStatus">Presence Status:</label>
+                    <select id="presenceStatus">
+                        <option value="online">🟢 Online</option>
+                        <option value="idle">🟡 Idle</option>
+                        <option value="dnd">🔴 Do Not Disturb</option>
+                        <option value="invisible">⚫ Invisible</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mobileMode">
+                        <input type="checkbox" id="mobileMode" style="margin-right: 8px;">
+                        📱 Mobile Platform Mode
+                    </label>
+                    <small style="display: block; color: rgba(255, 255, 255, 0.7); margin-top: 5px;">
+                        Shows a mobile indicator next to the bot's status
+                    </small>
+                </div>
+            </section>
+
+            <!-- Token Setup -->
+            <section class="setup-card">
+                <h2><i class="fas fa-key"></i> Token Setup</h2>
+                <div class="form-group">
+                    <label for="discordToken">Discord Bot Token:</label>
+                    <input type="password" id="discordToken" placeholder="Your Discord bot token">
+                    <button type="button" class="btn-validate" onclick="validateDiscordToken()">
+                        <i class="fas fa-check"></i> Validate
+                    </button>
+                </div>
+                <div class="form-group">
+                    <label for="aiApiKey">AI API Key (GROQ):</label>
+                    <input type="password" id="aiApiKey" placeholder="Your GROQ API key">
+                    <button type="button" class="btn-validate" onclick="validateAiKey()">
+                        <i class="fas fa-check"></i> Validate
+                    </button>
+                </div>
+                <div class="validation-status" id="validationStatus"></div>
+            </section>
+
+            <!-- Required Permissions -->
+            <section class="setup-card">
+                <h2><i class="fas fa-exclamation-triangle"></i> Required Discord Permissions</h2>
+                <div class="permissions-list">
+                    <div class="permission-item">
+                        <i class="fas fa-comment"></i>
+                        <span>MESSAGE CONTENT INTENT</span>
+                        <small>Required for reading message content</small>
+                    </div>
+                    <div class="permission-item">
+                        <i class="fas fa-users"></i>
+                        <span>SERVER MEMBERS INTENT</span>
+                        <small>Required for member-related features</small>
+                    </div>
+                    <div class="permission-item">
+                        <i class="fas fa-eye"></i>
+                        <span>PRESENCE INTENT</span>
+                        <small>Required for presence updates</small>
+                    </div>
+                </div>
+                <p class="warning">
+                    <i class="fas fa-info-circle"></i>
+                    Enable these options in your Discord Developer Portal under Bot → Privileged Gateway Intents
+                </p>
+            </section>
+
+            <!-- Commands Overview -->
+            <section class="setup-card">
+                <h2><i class="fas fa-terminal"></i> Available Commands</h2>
+                <div class="commands-grid">
+                    <div class="command-item">
+                        <code>/ping</code>
+                        <span>Check bot latency</span>
+                    </div>
+                    <div class="command-item">
+                        <code>/help</code>
+                        <span>Show available commands</span>
+                    </div>
+                    <div class="command-item">
+                        <code>/ai</code>
+                        <span>Ask AI a question</span>
+                    </div>
+                    <div class="command-item">
+                        <code>/status</code>
+                        <span>Change bot status</span>
+                    </div>
+                    <div class="command-item">
+                        <code>/say</code>
+                        <span>Make the bot say something</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="actions">
+            <button class="btn-primary" onclick="generateEnvFile()">
+                <i class="fas fa-download"></i> Generate .env File
+            </button>
+            <button class="btn-secondary" onclick="generateGitHubScript()">
+                <i class="fab fa-github"></i> Generate GitHub Deploy Script
+            </button>
+            <button class="btn-secondary" onclick="startBot()">
+                <i class="fas fa-play"></i> Start Bot
+            </button>
+        </div>
+
+        <div class="status-display" id="statusDisplay"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Discord AI Bot Setup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Setup Your Discord AI Bot</h1>
+        <p>Follow the instructions to make it work!</p>
+    </header>
+
+    <div class="container">
+        <!-- Existing code -->
+
+        <!-- Add the new button here -->
+        <a href="https://replit.com/@LuisTheDev/FlickeringGorgeousBooleanvalue" target="_blank">
+            <button class="btn-primary">Click here!</button>
+        </a>
+
+        <!-- Existing code -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

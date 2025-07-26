@@ -1,0 +1,25 @@
+{
+  "name": "discord-ai-bot-setup",
+  "version": "1.0.0",
+  "description": "A comprehensive Discord AI bot setup interface",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "web": "static-web-server -w ./.config/static-web-server.toml"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": ["discord", "bot", "ai", "setup"],
+  "author": "Discord Bot Setup",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

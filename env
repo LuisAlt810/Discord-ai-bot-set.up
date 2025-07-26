@@ -1,0 +1,17 @@
+
+# Discord Bot Configuration
+DISCORD_TOKEN=YOUR_DISCORD_BOT_TOKEN_HERE
+CLIENT_ID=YOUR_CLIENT_ID_HERE
+
+# Bot Settings
+BOT_NAME=AI Assistant
+BOT_DESCRIPTION=An AI-powered Discord bot that can help with various tasks
+BOT_PREFIX=!
+
+# AI Configuration
+OPENAI_API_KEY=YOUR_OPENAI_API_KEY_HERE
+
+# Bot Status Settings
+STATUS_TYPE=watching
+STATUS_TEXT=for commands
+PRESENCE_STATUS=online

@@ -1,4 +1,4 @@
-
+-# Use https://replit.com/@LuisTheDev/FlickeringGorgeousBooleanvalue if it doesn't work by remixing it and going to the secrets tab
 # Discord AI Bot Setup Guide
 
 ## 🤖 Bot Features
